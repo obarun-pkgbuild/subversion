@@ -8,7 +8,7 @@
 
 pkgname=subversion
 pkgver=1.9.7
-pkgrel=2
+pkgrel=5
 pkgdesc="A Modern Concurrent Version Control System"
 arch=(x86_64)
 url="http://subversion.apache.org/"
@@ -49,14 +49,20 @@ prepare() {
 build() {
    cd ${pkgname}-${pkgver}
    export PYTHON=/usr/bin/python2
-   ./configure --prefix=/usr --with-apr=/usr --with-apr-util=/usr \
-               --with-zlib=/usr --with-serf=/usr --with-apxs \
-               --with-sqlite=/usr \
-               --enable-javahl --with-jdk=/usr/lib/jvm/default \
-               --with-gnome-keyring --with-kwallet \
-               --with-apache-libexecdir=/usr/lib/httpd/modules \
-               --with-ruby-sitedir=/usr/lib/ruby/vendor_ruby \
-               --disable-static
+   ./configure 	--prefix=/usr \
+				--with-apr=/usr \
+				--with-apr-util=/usr \
+				--with-zlib=/usr \
+				--with-serf=/usr \
+				--with-apxs \
+				--with-sqlite=/usr \
+				--enable-javahl \
+				--with-jdk=/usr/lib/jvm/default \
+				--with-gnome-keyring \
+				--with-kwallet \
+				--with-apache-libexecdir=/usr/lib/httpd/modules \
+				--with-ruby-sitedir=/usr/lib/ruby/vendor_ruby \
+				--disable-static
 
    make LT_LDFLAGS="-L$Fdestdir/usr/lib"
    make swig_pydir=/usr/lib/python2.7/site-packages/libsvn \

@@ -7,21 +7,22 @@
 # 						Contributor: Jason Chu <jason@archlinux.org>
 
 pkgname=subversion
-pkgver=1.9.7
-pkgrel=5
+pkgver=1.10.0
+pkgrel=3
 pkgdesc="A Modern Concurrent Version Control System"
 arch=(x86_64)
 url="http://subversion.apache.org/"
 license=('APACHE')
-depends=('sqlite' 'file' 'serf')
-makedepends=('apache' 'python2' 'perl' 'swig' 'java-environment'
-             'libgnome-keyring' 'kdelibs' 'ruby')
+depends=('file' 'libutf8proc' 'serf' 'sqlite')
+makedepends=('apache' 'python2' 'perl' 'swig' 'java-environment<10'
+             'libgnome-keyring' 'kwallet' 'kdelibs4support' 'ruby')
 optdepends=('libgnome-keyring: for GNOME Keyring for auth credentials'
-            'kdebase-runtime: for KWallet for auth credentials'
+            'kwallet: for KWallet for auth credentials'
             'bash-completion: for svn bash completion'
             'python2: for some hook scripts'
             'java-environment: for Java support'
             'ruby: for some hook scripts')
+checkdepends=('ruby-test-unit')
 provides=('svn')
 backup=('etc/xinetd.d/svn' 'etc/conf.d/svnserve')
 options=('!makeflags' '!emptydirs')
@@ -31,7 +32,7 @@ source=(https://www.apache.org/dist/subversion/subversion-${pkgver}.tar.bz2
         svnserve.tmpfiles
         subversion.rpath.fix.patch
         ruby-frozen-nil.patch)
-sha512sums=('a55efd3edaddbc099450d849fcc6fe5a8d20b85ece966d8ac2fd73ee9cb4255a0349bbcfceb4e9fca6daf054ce7c648eff8d273c6873f5dade6e62dcea7eeb2b'
+sha512sums=('26e49c961d54c4e78067caa202f384c36544e0ce7506abbffe73e59186ac34559a70cbd6c0934ed47dcc5c3580fce0f0cc2ef14b77695c26e8dbbc6358d1ec6a'
             '3df59e92aa0314ff6adce26e2e1162bf2872ca03ff1f78891081a60e67b521b6046b4a2f85f718dcd27f9d5709594658817a09548cdb74e3976d371dbe47e7db'
             'f7f2ceac2446cc94ac2be3404083cc54a0f1f4d04d5301f600dfafca38819669bcffdfa45f1b90b9f3cdb042469385a764f11dc1a827f10c23ddf73b7ac6c9da'
             '7775f4da5003970c9ebdc2f696ba090df194a77d9daed791875488c943f72ae496b5f9cc6f3ff9f3f4de9f352a3b518137babdea38947d1a2d5dd16aa1844036'
